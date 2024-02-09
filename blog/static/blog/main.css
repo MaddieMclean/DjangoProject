@@ -16,16 +16,44 @@ ul {
   background-color: #5f788a;
 }
 
-.site-header .navbar-nav .nav-link .btn-link{
+.site-header .navbar-nav .nav-link, .btn-link{
   color: #cbd5db;
 }
 
-.site-header .navbar-nav .nav-link:hover .btn-link:hover{
+.site-header .navbar-nav .nav-link:hover, .btn-link:hover{
   color: #ffffff;
 }
 
-.site-header .navbar-nav .nav-link.active .btn-link .btn-link.active{
+.site-header .navbar-nav .nav-link.active, .btn-link .btn-link.active{
   font-weight: 500;
+}
+
+ .btn-link {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  @include color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: var(--#{$prefix}nav-link-hover-color);
+    text-decoration: if($link-hover-decoration == underline, none, null);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: $nav-link-focus-box-shadow;
+  }
+
+  // Disabled state lightens text
+  &.disabled,
+  &:disabled {
+    color: var(--#{$prefix}nav-link-disabled-color);
+    pointer-events: none;
+    cursor: default;
+  }
 }
 
 .navbar-collapse {
