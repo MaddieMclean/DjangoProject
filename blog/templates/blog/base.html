@@ -31,8 +31,18 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link">logout</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link">login</button>
+                    </form>
+                {% endif %}
+                <a class="nav-item nav-link" href="#">Register</a>
             </div>
           </div>
         </div>
